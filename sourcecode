@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include<stdlib.h>
+
+int main(){
+int choice;
+
+printf("\n--- Welcome to Calendar and Reminder System ---\n");
+while (1) {
+printf("\n1. View Calendar\n");
+printf("2. Add Reminder\n");
+printf("3. View Reminders\n");
+printf("4. Exit\n");
+printf("Enter your choice: ");
+scanf("%d", &choice);
+
+if (choice == 1) {
+int year;
+printf("Enter year: ");
+scanf("%d", &year);
+
+char command[50];
+sprintf(command, "cal %d", year);
+system(command);
+} else if (choice == 2) {
+int day, month, year;
+char event[100];
+printf("Enter date (DD MM YYYY): ");
+scanf("%d %d %d", &day, &month, &year);
+
+printf("Enter Event: ");
+getchar();
+fgets(event, sizeof(event), stdin);
+
+FILE *fp = fopen("reminders.txt", "a");
+if (fp == NULL) {
+printf("Error opening file!\n");
+return 1;
+}
+
+fprintf(fp, "%02d-%02d-%04d : %s", day, month, year, event);
+fclose(fp);
+
+printf("Reminder added successfully!\n");
+} else if (choice == 3) {
+FILE *fp = fopen("reminders.txt", "r");
+if (fp == NULL) {
+printf("No reminders found. Add one first!\n");
+continue;
+}
+char line[200];
+printf("\n--- Saved Reminders ---\n");
+while (fgets(line, sizeof(line), fp)) {
+printf("%s", line);
+}
+fclose(fp);
+} else if (choice == 4) {
+printf("Exiting...\n");
+break;
+} else {
+printf("Invalid choice. Try again.\n");
+}
+}
+return 0;
+}
