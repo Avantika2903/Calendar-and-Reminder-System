@@ -1,64 +1,69 @@
-#include <stdio.h>
-#include<stdlib.h>
+#!/bin/bash
 
-int main(){
-int choice;
+PINK='\033[1;35m'
+GREEN='\033[1;32m'
+YELLOW='\033[1;33m'
+RED='\033[1;31m'
+NC='\033[0m'
 
-printf("\n--- Welcome to Calendar and Reminder System ---\n");
-while (1) {
-printf("\n1. View Calendar\n");
-printf("2. Add Reminder\n");
-printf("3. View Reminders\n");
-printf("4. Exit\n");
-printf("Enter your choice: ");
-scanf("%d", &choice);
+REMINDER_FILE="reminders.txt"
 
-if (choice == 1) {
-int year;
-printf("Enter year: ");
-scanf("%d", &year);
-
-char command[50];
-sprintf(command, "cal %d", year);
-system(command);
-} else if (choice == 2) {
-int day, month, year;
-char event[100];
-printf("Enter date (DD MM YYYY): ");
-scanf("%d %d %d", &day, &month, &year);
-
-printf("Enter Event: ");
-getchar();
-fgets(event, sizeof(event), stdin);
-
-FILE *fp = fopen("reminders.txt", "a");
-if (fp == NULL) {
-printf("Error opening file!\n");
-return 1;
+view_calendar() {
+read -p "Enter year: " year
+cal "$year"
 }
 
-fprintf(fp, "%02d-%02d-%04d : %s", day, month, year, event);
-fclose(fp);
+add_reminder() {
+echo "Enter date (DD-MM-YYYY): "
+read date
+echo "Enter event: "
+read event
+echo "$date : $event" >> "$REMINDER_FILE"
+echo -e "${GREEN}Reminder added successfully!${NC}"
+}
 
-printf("Reminder added successfully!\n");
-} else if (choice == 3) {
-FILE *fp = fopen("reminders.txt", "r");
-if (fp == NULL) {
-printf("No reminders found. Add one first!\n");
-continue;
+view_reminders() {
+if [[ -f "$REMINDER_FILE" && -s "$REMINDER_FILE" ]]; then
+echo -e "${YELLOW}--- Your Reminders ---${NC}"
+cat "$REMINDER_FILE"
+else
+echo -e "${RED}No reminders found.${NC}"
+fi
 }
-char line[200];
-printf("\n--- Saved Reminders ---\n");
-while (fgets(line, sizeof(line), fp)) {
-printf("%s", line);
+
+delete_reminder() {
+if [[ ! -f "$REMINDER_FILE" ]]; then
+echo -e "${RED}No reminders to delete.${NC}"
+return
+fi
+read -p "Enter date of reminder to delete (DD-MM-YYYY): " date
+grep -v "$date" "$REMINDER_FILE" > temp.txt && mv temp.txt "$REMINDER_FILE"
+echo -e "${YELLOW}If a reminder with that date existed, it has been deleted.${NC}"
 }
-fclose(fp);
-} else if (choice == 4) {
-printf("Exiting...\n");
-break;
-} else {
-printf("Invalid choice. Try again.\n");
-}
-}
-return 0;
-}
+
+while true; do
+echo -e "${PINK}==========================================${NC}"
+echo -e "${PINK}     🌸 Calendar & Reminder System 🌸      ${NC}"
+echo -e "${PINK}==========================================${NC}"
+echo
+echo -e "Today's date and time: ${YELLOW}$(date)${NC}"
+echo
+echo -e "${GREEN}1.${NC} View Calendar"
+echo -e "${GREEN}2.${NC} Add Reminder"
+echo -e "${GREEN}3.${NC} View Reminders"
+echo -e "${GREEN}4.${NC} Delete Reminder"
+echo -e "${GREEN}5.${NC} Exit"
+echo
+read -p "Enter your choice: " choice
+
+case $choice in
+1) view_calendar ;;
+2) add_reminder ;;
+3) view_reminders ;;
+4) delete_reminder ;;
+5) echo -e "${PINK}Exit! Have a lovely day !${NC}"; exit ;;
+*) echo -e "${RED}Invalid choice! Please try again.${NC}" ;;
+esac
+echo
+read -p "Press Enter to continue..."
+done
