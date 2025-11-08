@@ -75,8 +75,6 @@ if, case, while	Conditional and looping structures used in the script.
 
 sleep -	Adds small delays for smoother user experience.
 
-clear	- Clears the terminal screen (optional — can be removed).
-
 exit	- Ends the script execution.
 
 ---Color Feature---
