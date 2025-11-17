@@ -90,4 +90,11 @@ RESET=$(tput sgr0)
 calendar_reminder.sh → main shell script
 
 reminders.txt → stores all events and reminders permanently
+
+OUTPUT:
+
+<img width="861" height="966" alt="Screenshot 2025-11-03 155829" src="https://github.com/user-attachments/assets/3e4aea6a-627e-4bd2-8a6a-2c5e44624df9" />
+
+<img width="749" height="928" alt="Screenshot 2025-11-02 182330" src="https://github.com/user-attachments/assets/d66e1378-de15-4d43-a6ab-5c4c2d52f08b" />
+
                                                                                          
