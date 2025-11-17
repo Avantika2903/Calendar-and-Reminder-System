@@ -1,4 +1,4 @@
-                                                      🌸 Calendar and Reminder System
+                                                         Calendar and Reminder System
  BY:
 
 Avantika Pandey
