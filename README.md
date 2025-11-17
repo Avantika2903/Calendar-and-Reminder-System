@@ -93,8 +93,16 @@ reminders.txt → stores all events and reminders permanently
 
 OUTPUT:
 
+
+
+<img width="894" height="859" alt="Screenshot 2025-11-17 153327" src="https://github.com/user-attachments/assets/5ecde042-faf2-40ed-9635-58a9431f1c36" />
+
+<img width="1110" height="750" alt="Screenshot 2025-11-17 153428" src="https://github.com/user-attachments/assets/e1690935-1b8a-4b8e-87f4-642c957df7a2" />
+
 <img width="749" height="928" alt="Screenshot 2025-11-03 155829" src="https://github.com/user-attachments/assets/3e4aea6a-627e-4bd2-8a6a-2c5e44624df9" />
 
 <img width="749" height="928" alt="Screenshot 2025-11-02 182330" src="https://github.com/user-attachments/assets/d66e1378-de15-4d43-a6ab-5c4c2d52f08b" />
+
+
 
                                                                                          
