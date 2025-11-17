@@ -93,17 +93,17 @@ reminders.txt → stores all events and reminders permanently.
 
 ---ANSI Codes Used in Script---
 
-Variable	                Code	                  Meaning / Effect
+Variable - Code - Meaning / Effect
 
-PINK	                 \033[1;35m	              Bold / bright magenta text
+PINK	- \033[1;35m - Bold / bright magenta text
 
-GREEN	                 \033[1;32m	              Bold / bright green text
+GREEN	 - \033[1;32m - Bold / bright green text
 
-YELLOW	               \033[1;33m	              Bold / bright yellow text
+YELLOW - \033[1;33m	- Bold / bright yellow text
 
-RED	                   \033[1;31m	              Bold / bright red text
+RED	   - \033[1;31m -	Bold / bright red text
 
-NC	                   \033[0m	                Reset text color and style to normal
+NC	  -   \033[0m	 -  Reset text color and style to normal
 
 OUTPUT:
 
