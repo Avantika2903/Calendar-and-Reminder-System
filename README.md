@@ -91,7 +91,7 @@ calendar_reminder.sh → main shell script
 
 reminders.txt → stores all events and reminders permanently.
 
-ANSI Codes Used in Script
+---ANSI Codes Used in Script---
 
 Variable	                Code	                  Meaning / Effect
 
